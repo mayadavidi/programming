@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>בורגר VIP - טופס הזמנה</title>
+    <link rel="stylesheet" href="styles/myStyle.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- אזור טופס ההזמנה -->
+        <div class="form-container">
+            <h1>בורגר VIP</h1>
+
+            <!-- בחירת מספר קציצות -->
+            <div class="category-box">
+                <h3>כמה קציצות תרצה?</h3>
+                <!-- כל כפתור רדיו מייצג מספר קציצות שניתן לבחור, והלחיצה עליו מעדכנת את התמונה ומוודאת תקינות -->
+                <label><input type="radio" name="patty" value="1" onclick="updatePattyImage(); validateForm()"> קציצה אחת - קליל!</label><br>
+                <label><input type="radio" name="patty" value="2" onclick="updatePattyImage(); validateForm()"> שתי קציצות - רעב בינוני</label><br>
+                <label><input type="radio" name="patty" value="3" onclick="updatePattyImage(); validateForm()"> שלוש קציצות - הכי מספק!</label>
+            </div>
+
+            <!-- בחירת רטבים -->
+            <div class="category-box">
+                <h3>איזה רטבים בא לך?</h3>
+                <!-- כל צ'קבוקס מייצג רוטב לבחירה, והלחיצה עליו מעדכנת את השקיפות של תמונת הרוטב המתאימה -->
+                <label><input type="checkbox" name="sauce" value="ketchup" onclick="updateSauceImage()"> קטשופ אדום לוהט</label><br>
+                <label><input type="checkbox" name="sauce" value="mustard" onclick="updateSauceImage()"> חרדל פיקנטי</label><br>
+                <label><input type="checkbox" name="sauce" value="mayonnaise" onclick="updateSauceImage()"> מיונז הכי טעים</label>
+            </div>
+
+            <!-- בחירת תוספות -->
+            <div class="category-box">
+                <h3>התוספות שיעשו לך את זה:</h3>
+                <!-- כל צ'קבוקס מייצג תוספת לבחירה, והלחיצה עליו מעדכנת את השקיפות של תמונת התוספת המתאימה -->
+                <label><input type="checkbox" name="topping" value="tomato" onclick="updateToppingImage()"> עגבניה טרייה</label><br>
+                <label><input type="checkbox" name="topping" value="onion" onclick="updateToppingImage()"> בצל פריך</label><br>
+                <label><input type="checkbox" name="topping" value="lettuce" onclick="updateToppingImage()"> חסה קריספית</label>
+            </div>
+
+            <!-- בחירת שתייה -->
+            <div class="category-box">
+                <h3>חייב משהו לשתות...</h3>
+                <!-- כל צ'קבוקס מייצג סוג שתייה, והלחיצה עליו מעדכנת את השקיפות של תמונת השתייה המתאימה -->
+                <label><input type="checkbox" name="drink" value="blue_drink" onclick="updateDrinkImage()"> אני טיפוס של מים</label><br>
+                <label><input type="checkbox" name="drink" value="yellow_drink" onclick="updateDrinkImage()"> משקה צהוב ומרענן</label><br>
+                <label><input type="checkbox" name="drink" value="red_drink" onclick="updateDrinkImage()"> משקה אדום וטרופי</label><br>
+                <label><input type="checkbox" name="drink" value="green_drink" onclick="updateDrinkImage()"> משקה ירוק ותוסס</label>
+            </div>
+
+            <!-- בחירת תוספות צד -->
+            <div class="category-box">
+                <h3>תוספות צד:</h3>
+                <!-- כל צ'קבוקס מייצג תוספת צד, והלחיצה עליו מעדכנת את השקיפות של תמונת התוספת המתאימה -->
+                <label><input type="checkbox" name="side" value="Sweet potato chips" onclick="updateSideImage()"> צ'יפס בטטה</label><br>
+                <label><input type="checkbox" name="side" value="Potato chips" onclick="updateSideImage()"> צ'יפס תפוחי אדמה</label><br>
+                <label><input type="checkbox" name="side" value="Onion rings" onclick="updateSideImage()"> טבעות בצל</label>
+            </div>
+
+            <!-- פרטים אישיים -->
+            <div class="category-box">
+                <h3>פרטים אישיים</h3>
+                <!-- שדה קלט לשם מלא -->
+                שם מלא: <input type="text" id="full-name" placeholder="הכנס את שמך כאן" oninput="validateForm()"><br>
+                <!-- שדה טקסט להערות נוספות -->
+                הערות נוספות: <textarea id="notes" placeholder="רוצה לשתף אותנו בבקשה?"></textarea>
+            </div>
+
+            <!-- כפתור לשליחת ההזמנה -->
+            <button id="submit-btn" onclick="showSummary()" disabled style="opacity: 0.5;">יאללה, תביאו לי את זה!</button>
+
+            <!-- תיבת סיכום ההזמנה -->
+            <div id="summary-box" class="summary-box" style="display: none;">
+                <h3>סיכום הזמנה:</h3>
+                <p id="summary-text"></p>
+            </div>
+        </div>
+
+        <!-- אזור לתצוגת התמונות שנבחרו -->
+        <div id="images-container">
+            <!-- תצוגת תמונת הקציצה לפי מספר הקציצות שנבחרו -->
+            <div class="category-box">
+                <h3>כמה קציצות</h3>
+                <img id="patty-image" class="image" src="Images/burger1.png" style="display:none;" alt="המבורגר">
+            </div>
+
+            <!-- תצוגת תמונות רטבים -->
+            <div class="category-box">
+                <h3>רטבים</h3>
+                <img src="Images/ketchup.png" id="ketchup-img" class="image sauce-image" alt="קטשופ">
+                <img src="Images/mustard.png" id="mustard-img" class="image sauce-image" alt="חרדל">
+                <img src="Images/mayonnaise.png" id="mayonnaise-img" class="image sauce-image" alt="מיונז">
+            </div>
+
+            <!-- תצוגת תמונות תוספות -->
+            <div class="category-box">
+                <h3>תוספות</h3>
+                <img src="Images/Tomatoes.png" id="tomato-img" class="image topping-image" alt="עגבניה">
+                <img src="Images/onion.png" id="onion-img" class="image topping-image" alt="בצל">
+                <img src="Images/lettuce.png" id="lettuce-img" class="image topping-image" alt="חסה">
+            </div>
+
+            <!-- תצוגת תמונות שתייה -->
+            <div class="category-box">
+                <h3>משהו לשתות</h3>
+                <img src="Images/blue_drink.png" id="blue_drink-img" class="drink-image" alt="מים">
+                <img src="Images/yellow_drink.png" id="yellow_drink-img" class="drink-image" alt="שתייה צהובה">
+                <img src="Images/red_drink.png" id="red_drink-img" class="drink-image" alt="שתייה אדומה">
+                <img src="Images/green_drink.png" id="green_drink-img" class="drink-image" alt="שתייה ירוקה">
+            </div>
+
+            <!-- תצוגת תמונות תוספות צד -->
+            <div class="category-box">
+                <h3>תוספות צד</h3>
+                <img src="Images/Sweet potato chips.png" id="Sweet-potato-chips-img" class="image side-image" alt="צ'יפס בטטה">
+                <img src="Images/Potato chips.png" id="Potato-chips-img" class="image side-image" alt="צ'יפס תפוחי אדמה">
+                <img src="Images/Onion rings.png" id="Onion-rings-img" class="image side-image" alt="טבעות בצל">
+            </div>
+        </div>
+    </div>
+    <!-- קישור לקובץ ה-JavaScript -->
+    <script src="jScripts/JavaScript.js"></script>
+</body>
+</html>

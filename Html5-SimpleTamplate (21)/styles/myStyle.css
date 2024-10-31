@@ -1,0 +1,103 @@
+﻿/* פונטים */
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap'); /* ייבוא גופן Assistant מ-Google Fonts */
+
+/* עיצוב כללי של גוף העמוד */
+body {
+    font-family: 'Assistant', sans-serif; /* הגדרת גופן כללי */
+    background-color: #FAF3E0; /* צבע רקע בהיר */
+    color: #333; /* צבע טקסט כהה */
+    display: flex; /* סידור האלמנטים בתצוגה גמישה */
+    justify-content: center; /* מרכז את התוכן אופקית */
+    align-items: flex-start; /* ממקם את התוכן בחלק העליון אנכית */
+    margin: 0; /* ביטול מרווחים חיצוניים */
+    padding: 20px; /* מרווח פנימי */
+    flex-direction: row; /* סידור האלמנטים בשורה */
+}
+
+/* עיצוב המיכל הראשי */
+.main-container {
+    display: flex; /* הצגת תצוגה גמישה */
+    gap: 10px; /* מרווח בין האלמנטים בתוך המיכל */
+    width: 90%; /* רוחב המיכל */
+    align-items: flex-start; /* מיקום האלמנטים בחלק העליון */
+}
+
+/* עיצוב טופס ההזמנה */
+.form-container {
+    background-color: rgba(255, 255, 255, 0.9); /* רקע לבן עם שקיפות קלה */
+    border-radius: 10px; /* פינות מעוגלות */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* צל עדין */
+    padding: 20px; /* מרווח פנימי */
+    width: 55%; /* רוחב של 55% מהמיכל הראשי */
+    text-align: right; /* יישור טקסט לימין */
+    direction: rtl; /* הגדרת כיוון כתיבה מימין לשמאל */
+}
+
+/* עיצוב כותרת ראשית */
+h1 {
+    color: #D32F2F; /* צבע אדום כהה */
+    text-align: center; /* מיקום טקסט במרכז */
+    font-size: 2.2em; /* גודל פונט גדול */
+    font-weight: bold; /* טקסט מודגש */
+    margin-bottom: 20px; /* מרווח תחתון */
+}
+
+/* עיצוב קטגוריות בטופס (כגון רטבים, תוספות וכו') */
+.category-box {
+    background-color: rgba(93, 64, 55, 0.1); /* רקע בהיר עם גוון חום ושקיפות */
+    padding: 12px; /* מרווח פנימי */
+    border-radius: 8px; /* פינות מעוגלות */
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* צל קל */
+    margin-bottom: 8px; /* מרווח תחתון */
+}
+
+/* עיצוב מיכל התמונות */
+#images-container {
+    background-color: rgba(60, 60, 60, 0.15); /* רקע כהה יותר כדי להדגיש את התמונות */
+    border-radius: 10px; /* פינות מעוגלות */
+    padding: 15px; /* מרווח פנימי */
+    width: 40%; /* רוחב של 40% מהמיכל הראשי */
+    display: flex; /* הצגת תצוגה גמישה */
+    flex-direction: column; /* סידור אלמנטים בטור */
+    gap: 12px; /* מרווח בין האלמנטים */
+    text-align: center; /* יישור טקסט במרכז */
+}
+
+/* עיצוב לתמונות של אלמנטים שונים בטופס */
+.image, .drink-image, .side-image {
+    width: 80px; /* רוחב של 80px */
+    margin: 5px; /* מרווח חיצוני קטן סביב התמונה */
+    opacity: 0.5; /* ברירת מחדל של חצי שקיפות */
+    transition: opacity 0.3s; /* מעבר חלק לשינוי שקיפות */
+}
+
+/* עיצוב כפתור ההגשה */
+button {
+    background-color: #FF7043; /* צבע רקע כתום */
+    color: white; /* צבע טקסט לבן */
+    border: none; /* ביטול מסגרת הכפתור */
+    border-radius: 5px; /* פינות מעוגלות */
+    padding: 10px 20px; /* מרווח פנימי */
+    font-size: 16px; /* גודל פונט בינוני */
+    cursor: pointer; /* מצביע עכבר על כפתור */
+    transition: background-color 0.3s; /* מעבר צבע רקע חלק */
+    width: 100%; /* רוחב מלא */
+}
+
+    /* עיצוב הכפתור במצב ריחוף */
+    button:hover {
+        background-color: #E64A19; /* צבע כהה יותר במצב ריחוף */
+    }
+
+    /* עיצוב הכפתור במצב מושבת */
+    button:disabled {
+        background-color: #BDBDBD; /* צבע רקע אפור */
+        cursor: not-allowed; /* מצביע עכבר על כפתור מושבת */
+        opacity: 0.5; /* חצי שקיפות */
+    }
+
+/* עיצוב תיבת תמונת הקציצות */
+#patty-image {
+    display: block; /* הצגת התמונה כבלוק */
+    margin: 0 auto; /* מרכז את התמונה בתיבה */
+}
